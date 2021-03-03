@@ -124,7 +124,7 @@
       "schematics": {},
       "root": "projects/acme-starter",
       "sourceRoot": "projects/acme-starter/src",
-      "prefix": "app",
+      "prefix": "pm",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -139,9 +139,7 @@
               "projects/acme-starter/src/favicon.ico",
               "projects/acme-starter/src/assets"
             ],
-            "styles": [
-              "projects/acme-starter/src/styles.css"
-            ],
+            "styles": ["projects/acme-starter/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -202,9 +200,7 @@
               "projects/acme-starter/src/favicon.ico",
               "projects/acme-starter/src/assets"
             ],
-            "styles": [
-              "projects/acme-starter/src/styles.css"
-            ],
+            "styles": ["projects/acme-starter/src/styles.css"],
             "scripts": []
           }
         },
@@ -216,9 +212,7 @@
               "projects/acme-starter/tsconfig.spec.json",
               "projects/acme-starter/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
