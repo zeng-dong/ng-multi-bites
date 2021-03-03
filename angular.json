@@ -24,7 +24,8 @@
               "projects/acme-ngrx/src/assets"
             ],
             "styles": [
-              "projects/acme-ngrx/src/styles.css"
+              "projects/acme-ngrx/src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -87,7 +88,8 @@
               "projects/acme-ngrx/src/assets"
             ],
             "styles": [
-              "projects/acme-ngrx/src/styles.css"
+              "projects/acme-ngrx/src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           }
@@ -100,9 +102,7 @@
               "projects/acme-ngrx/tsconfig.spec.json",
               "projects/acme-ngrx/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -114,6 +114,122 @@
           "configurations": {
             "production": {
               "devServerTarget": "acme-ngrx:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "acme-starter": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/acme-starter",
+      "sourceRoot": "projects/acme-starter/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/acme-starter",
+            "index": "projects/acme-starter/src/index.html",
+            "main": "projects/acme-starter/src/main.ts",
+            "polyfills": "projects/acme-starter/src/polyfills.ts",
+            "tsConfig": "projects/acme-starter/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/acme-starter/src/favicon.ico",
+              "projects/acme-starter/src/assets"
+            ],
+            "styles": [
+              "projects/acme-starter/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/acme-starter/src/environments/environment.ts",
+                  "with": "projects/acme-starter/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "acme-starter:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "acme-starter:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "acme-starter:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/acme-starter/src/test.ts",
+            "polyfills": "projects/acme-starter/src/polyfills.ts",
+            "tsConfig": "projects/acme-starter/tsconfig.spec.json",
+            "karmaConfig": "projects/acme-starter/karma.conf.js",
+            "assets": [
+              "projects/acme-starter/src/favicon.ico",
+              "projects/acme-starter/src/assets"
+            ],
+            "styles": [
+              "projects/acme-starter/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/acme-starter/tsconfig.app.json",
+              "projects/acme-starter/tsconfig.spec.json",
+              "projects/acme-starter/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/acme-starter/e2e/protractor.conf.js",
+            "devServerTarget": "acme-starter:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "acme-starter:serve:production"
             }
           }
         }
