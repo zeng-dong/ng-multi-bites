@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header">Product List</div>
+  <div class="card-header">{{ pageTitle }}</div>
 
   <div class="card-body">
     <div class="row">
@@ -17,7 +17,7 @@
   </div>
 
   <div class="table-responsive">
-    <table class="table">
+    <table class="table" *ngIf="products && products.length">
       <thead>
         <tr>
           <th>
@@ -30,7 +30,20 @@
           <th>5 Star Ratings</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td></td>
+          <td>
+            {{ product.productName }}
+          </td>
+          <td>{{ product.productCode | lowercase }}</td>
+          <td>{{ product.releaseDate }}</td>
+          <td>{{ product.price | currency: "USD":"symbol":"1.2-2" }}</td>
+          <td>
+            {{ product.starRating }}
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>
